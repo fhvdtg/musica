@@ -21,6 +21,53 @@ client.on('disconnect', () => console.log('I disconnected!'));
 
 client.on('reconnecting', () => console.log('I am disconnecting!'));
 
+client.on('message', message => {
+    var prefix = ">";
+      if (!message.content.startsWith(prefix)) return;
+      var args = message.content.split(' ').slice(1);
+      var argresult = args.join(' ');
+      if (message.author.id == 436918120184021012) return;
+    
+    if (message.content.startsWith(prefix + 'p')) {
+      client.user.setGame(argresult);
+        message.channel.sendMessage(`**${argresult}** : Status changed`)
+    } else
+    
+    if (message.content.startsWith(prefix + 's')) {
+      client.user.setGame(argresult, "https://www.twitch.tv/ChampionBot");
+        message.channel.sendMessage(`**${argresult}** :The bot stream has been changed`)
+    } else
+    
+    if (message.content.startsWith(prefix + 'n')) {
+      client.user.setUsername(argresult).then
+          message.channel.sendMessage(`**${argresult}** : Name changed`)
+      return message.reply("**You**");
+    } else
+    if (message.content.startsWith(prefix + 'i')) {
+      client.user.setAvatar(argresult);
+        message.channel.sendMessage(`**${argresult}** : The bot image has been changed`);
+    
+    }
+    });
+
+client.on('message', message => {
+    if (message.content === '1help') {
+        let helpEmbed = new Discord.RichEmbed()
+        .setTitle('** اوامر بوت ميوزك عرب سيرفر،**')
+        .setDescription('**برفكس البوت (!)**')
+        .addField('play', 'لتشغيل اغنية')
+        .addField('join', 'دخول رومك الصوتي')
+        .addField('disconnect', 'الخروج من رومك الصوتي')
+        .addField('skip', 'تخطي الأغنية')
+        .addField('pause', 'ايقاف الاغنية مؤقتا')
+        .addField('resume', 'تكملة الاغنية')
+        .addField('queue', 'اظهار قائمة التشغيل')
+        .addField('np', 'اظهار الاغنية اللي انت مشغلها حاليا')
+        .setFooter('انا زعلان كيييييييييييييير')
+      message.channel.send(helpEmbed);
+    }
+});
+
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
@@ -32,7 +79,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   } else if(newUserChannel === undefined){
 
     // User leaves a voice channel
-      if(oldMember.id === '498378677512437762'){
+      if(oldMember.id === '436918120184021012'){
           return console.log("BOT");
       }
       else{
