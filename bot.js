@@ -68,6 +68,49 @@ client.on('message', message => {
     }
 });
 
+client.on("message", message => {
+    
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "clear")) {
+                if(!message.channel.guild) return;
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**No Permissions**');
+        var msg;
+        msg = parseInt();
+      
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "Done",
+        color: 0x36393e,
+        description: "The Room chat has been Deleted !",
+        footer: {
+          text: "Pixel Bot©."
+        }
+      }}).then(msg => {msg.delete(3000)});
+                          }
+
+     
+});
+
+client.on("message", message => {
+if(message.content.startsWith(prefix + "avatar")){
+if(message.author.bot || message.channel.type == "dm") return;
+var args = message.content.split(" ")[1];
+var avt = args || message.author.id;
+client.fetchUser(avt) 
+.then((user) => {
+avt = user
+let avtEmbed = new Discord.RichEmbed()
+.setColor("#36393e")
+.setAuthor(`${avt.username}'s Avatar`, message.author.avatarURL)
+.setImage(avt.avatarURL)
+.setFooter(`PrimeBot.`, message.client.user.avatarURL);
+message.channel.send(avtEmbed);
+})
+.catch(() => message.channel.send(`Error`));
+} // Julian
+}); // Codes - Toxic Codes
+
 client.on('voiceStateUpdate', (oldMember, newMember) => {
   let newUserChannel = newMember.voiceChannel
   let oldUserChannel = oldMember.voiceChannel
