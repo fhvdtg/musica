@@ -315,7 +315,7 @@ Playing: ${serverQueue.songs[0].title}`)
     }
     else if(msg.content.startsWith(`${PREFIX}cmds`)){
         var embedhelp = new Discord.RichEmbed()
-            .setTitle(`marcos-MusicBot Commands`)
+            .setTitle(`MusicBot Commands`)
             .addField("play [YouTube Link/Playlist]", "Usage: `!!play` Description: To play See The YouTube Linke And playlist.", false)
             .addField("play [Suchbegriff(e)]", "Usage: `!!play`<song name> Description: To play Music.", false)
             .addField("skip", "Usage: `!!skip` Description: To skip music.", false)
@@ -433,7 +433,5 @@ client.on('ready', () => {
 client.on('ready', () => { //code bot not leave room voice //Bot Is Online
     client.channels.get("560506352347250708").join(); //by :n3k4a 
     });
-
-
 
 client.login(process.env.BOT_TOKEN);
