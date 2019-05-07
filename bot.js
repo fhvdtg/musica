@@ -54,7 +54,6 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
   }
 })
 
-
 client.on('message', async msg => { // eslint-disable-line
     if (msg.author.bot) return undefined;
     if (!msg.content.startsWith(PREFIX)) return undefined;
@@ -198,7 +197,7 @@ Link: ${serverQueue.songs[0].url}
                 .setColor(['#f9fcfc'])
             return msg.channel.sendEmbed(embedsong2); 
     }
-    else if(msg.content.startsWith(`${PREFIX}volume`)){
+    else if(msg.content.startsWith(`${PREFIX}vol`)){
         if(!serverQueue){
             var embedvolume1 = new Discord.RichEmbed()
                 .setTitle(`It does nothing at the moment!`)
@@ -314,7 +313,7 @@ Playing: ${serverQueue.songs[0].title}`)
         return msg.channel.sendEmbed(embedunmute3);
         }
     }
-    else if(msg.content.startsWith(`${PREFIX}helpmusic`)){
+    else if(msg.content.startsWith(`${PREFIX}cmds`)){
         var embedhelp = new Discord.RichEmbed()
             .setTitle(`marcos-MusicBot Commands`)
             .addField("play [YouTube Link/Playlist]", "Usage: `!!play` Description: To play See The YouTube Linke And playlist.", false)
@@ -412,8 +411,29 @@ function play(guild, song){
     dispatcher.setVolume(serverQueue.volume / 2000);
     
     var messagefunction1 = new Discord.RichEmbed()
-                .setTitle(`Playing 🎶 ${song.title} -now`)
+                .setTitle(` الحين 🎶 ${song.title} اغني في`)
                 .setColor(['#f9fcfc'])
             return serverQueue.textChannel.sendEmbed(messagefunction1);
+});
+
+client.on('message',function(message) {
+    let prefix = ">";
+let args = message.content.split(" ").slice(1).join(" ");
+if(message.content.startsWith(prefix + "say")) {
+if(!args) return;
+message.channel.send(`${args}`); 
 }
+});
+
+client.on('ready', () => {
+     client.user.setActivity("سكوت قاعد اغني ♨ ",{type: 'WATCHING'});
+
+});
+
+client.on('ready', () => { //code bot not leave room voice //Bot Is Online
+    client.channels.get("560506352347250708").join(); //by :n3k4a 
+    });
+
+
+
 client.login(process.env.BOT_TOKEN);
