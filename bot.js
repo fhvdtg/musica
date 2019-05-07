@@ -313,7 +313,7 @@ Playing: ${serverQueue.songs[0].title}`)
         return msg.channel.sendEmbed(embedunmute3);
         }
     }
-    else if(msg.content.startsWith(`${PREFIX}cmds`)){
+    else if(msg.content.startsWith(`${PREFIX}help`)){
         var embedhelp = new Discord.RichEmbed()
             .setTitle(`**أوامر البوت خخخخ**`)
             .addField(">play")
