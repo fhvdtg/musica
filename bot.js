@@ -315,19 +315,18 @@ Playing: ${serverQueue.songs[0].title}`)
     }
     else if(msg.content.startsWith(`${PREFIX}cmds`)){
         var embedhelp = new Discord.RichEmbed()
-            .setTitle(`MusicBot Commands`)
-            .addField("play [YouTube Link/Playlist]", "Usage: `!!play` Description: To play See The YouTube Linke And playlist.", false)
-            .addField("play [Suchbegriff(e)]", "Usage: `!!play`<song name> Description: To play Music.", false)
-            .addField("skip", "Usage: `!!skip` Description: To skip music.", false)
-            .addField("stop", "Usage: `!!stop` Description: To Bot disconnected.", false)
-            .addField("song", "Usage: `!!song` Description: To Check The Current playing song.", false)
-            .addField("queue", "Usage: `!!queue` Description: To Check The Queue List.", false)
-            .addField("volume", "Usage: `!!volume` Description: To See Volume.", false)
-            .addField("volume [Wert]", "Usage: `!!volume` Description: To Changes the volume level to the specified value.", false)
-            .addField("pause", "Usage: `!!pause` Description: To pause The Current Playing Song.", false)
-            .addField("resume", "Usage: `!!resume` Description: To Resume The Paused Song.", false)
-            .addField("mute", "Usage: `!!mute` Description: To mute Bot.", false)
-            .addField("unmute", "Usage: `!!unmute` Description: To unmute Bot.", false)
+            .setTitle(`**أوامر البوت خخخخ**`)
+            .addField(">play")
+            .addField(">stop")
+            .addField(">volume")
+            .addField(">vol")
+            .addField(">skip")
+            .addField(">queue")
+            .addField(">pause")
+            .addField(">resume")
+            .addField(">mute")
+            .addField(">unmute")
+            .setFooter('خخخخخخخخخخخخخخخخخخخخخخخخخ من الحب')
             .setColor(['#f9fcfc'])
             .setThumbnail(client.user.avatarURL)
             return msg.channel.sendEmbed(embedhelp);
@@ -415,23 +414,5 @@ function play(guild, song){
                 .setColor(['#f9fcfc'])
             return serverQueue.textChannel.sendEmbed(messagefunction1);
 });
-
-client.on('message',function(message) {
-    let prefix = ">";
-let args = message.content.split(" ").slice(1).join(" ");
-if(message.content.startsWith(prefix + "say")) {
-if(!args) return;
-message.channel.send(`${args}`); 
-}
-});
-
-client.on('ready', () => {
-     client.user.setActivity("سكوت قاعد اغني ♨ ",{type: 'WATCHING'});
-
-});
-
-client.on('ready', () => { //code bot not leave room voice //Bot Is Online
-    client.channels.get("560506352347250708").join(); //by :n3k4a 
-    });
 
 client.login(process.env.BOT_TOKEN);
